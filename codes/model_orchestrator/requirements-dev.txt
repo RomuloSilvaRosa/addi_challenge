@@ -1,0 +1,6 @@
+black
+pylint
+pyflakes
+isort==5.5.2
+autoflake
+autopep8

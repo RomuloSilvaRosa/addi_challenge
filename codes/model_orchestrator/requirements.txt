@@ -1,0 +1,4 @@
+pydantic==1.10.1
+boto3_type_annotations
+botocore==1.27.66
+boto3==1.24.66
