@@ -3,6 +3,7 @@
 # MAKEFLAGS += --no-print-directory -s
 # endif
 ECR_NAME=orchestrator/lambda
+FUNCTION_NAME=addi-challenge-orchestrator
 
 lint: ## Remove unused imports and variables/Format using black
 	@echo "---- Refactorying ----"
@@ -54,8 +55,10 @@ docker_push: docker_init
 	aws ecr get-login-password | docker login --username AWS --password-stdin "$(ECR_URL)"
 	@docker push ${ECR_URL}:${DOCKER_IMAGE_TAG}
 	@docker push ${ECR_URL}:latest
-send_test_data:
-	@curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+
+update_function: docker_init
+	@aws lambda update-function-code --function-name ${FUNCTION_NAME} --image-uri ${ECR_URL}:${DOCKER_IMAGE_TAG} > /dev/null 2>&1
+
 help: ## Show some help
 	@echo
 	@echo '  Usage:'

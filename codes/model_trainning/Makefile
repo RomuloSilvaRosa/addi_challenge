@@ -41,7 +41,7 @@ docker_build: docker_init
 
 docker_run:  ## Run application in dev mode
 	@echo Starting application $(shell basename $(CURDIR))
-	@docker run --name $(shell basename $(CURDIR)) -it --rm -v $(pwd)/zippable:/var/task/zippable -p  9000:8080 
+	@docker run --name $(shell basename $(CURDIR)) -it --rm -p  9000:8080 
 
 docker_init:
 	$(eval export aws_account_id=$(shell aws --output text --query Account sts get-caller-identity))
@@ -57,7 +57,7 @@ docker_push: docker_init
 
 
 update_function: docker_init
-	@aws lambda update-function-code --function-name ${FUNCTION_NAME} --image-uri ${ECR_URL}:${DOCKER_IMAGE_TAG}
+	@aws lambda update-function-code --function-name ${FUNCTION_NAME} --image-uri ${ECR_URL}:${DOCKER_IMAGE_TAG} > /dev/null 2>&1
 send_test_data:
 	@curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
 help: ## Show some help
