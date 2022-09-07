@@ -3,7 +3,7 @@ The current repository contains infraestructure as code, deployment and applicat
 
 
 ## Challenge steps:
-1. Train model and save in a model.joblib file in  https://github.com/RomuloSilvaRosa/addi_challenge/blob/41b7a9582b8ebaf77413cfcbf8296967a336ad73/lambdas/model_trainning/Trainning.ipynb
+1. Train model and save in a model.joblib file in  https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
 2. Deploy infraestructure (`./infraestructure`) using `scripts/CI.sh -a`
 3. Deploy applications (`.lambdas`) using `scripts/CD.sh -a`
 
@@ -47,7 +47,7 @@ bash scripts/clean.sh
 ## Proposed Architecture
 The architecture is compounded of 4 elements: 
 1. A DynamoDB acting as an in memory feature store;
-2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/addi_challenge/blob/41b7a9582b8ebaf77413cfcbf8296967a336ad73/lambdas/model_trainning/Trainning.ipynb
+2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
 3. A Kinesis Firehose + S3 + Athena acting as an evaluation store;
 4. A Lambda (orchestrator) acting as a glue between feature gathering, model prediction and logging data in evaluation store.
 
