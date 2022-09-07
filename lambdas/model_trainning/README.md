@@ -1,3 +1,0 @@
-## Model trainning
-
-make dev
