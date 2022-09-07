@@ -34,10 +34,10 @@ resource "aws_kinesis_firehose_delivery_stream" "firehose_stream" {
   destination = "s3"
 
   s3_configuration {
-    role_arn   = aws_iam_role.firehose_role.arn
-    bucket_arn = aws_s3_bucket.bucket.arn
-    buffer_interval    = 60
-    buffer_size        = 1
+    role_arn        = aws_iam_role.firehose_role.arn
+    bucket_arn      = aws_s3_bucket.bucket.arn
+    buffer_interval = 60
+    buffer_size     = 1
   }
 }
 
@@ -73,27 +73,6 @@ resource "aws_iam_role_policy_attachment" "firehose_s3" {
   role       = aws_iam_role.firehose_role.name
   policy_arn = aws_iam_policy.firehose_s3.arn
 }
-
-# resource "aws_iam_policy" "put_record" {
-#   name_prefix = "kinesis-firehose"
-#   policy      = <<-EOF
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#         {
-#             "Effect": "Allow",
-#             "Action": [
-#                 "firehose:PutRecord",
-#                 "firehose:PutRecordBatch"
-#             ],
-#             "Resource": [
-#                 "${aws_kinesis_firehose_delivery_stream.firehose_stream.arn}"
-#             ]
-#         }
-#     ]
-# }
-# EOF
-# }
 
 resource "aws_athena_database" "evaluation_store_table" {
   name   = "evaluation_store_table"
