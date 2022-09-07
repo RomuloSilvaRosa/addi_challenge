@@ -1,11 +1,9 @@
 import json
 import logging
-import queue
 import re
 import sys
 import typing
 from datetime import datetime as dt
-from logging.handlers import QueueHandler, QueueListener
 
 
 def _get_klass_name(klass: typing.Any) -> str:
@@ -13,7 +11,8 @@ def _get_klass_name(klass: typing.Any) -> str:
     return re.sub(r"|".join(map(re.escape, ["<class", "'", ">", " "])), "", str(klass))
 
 
-_LOGGER = logging.getLogger()
+_LOGGER = logging.getLogger('main_logger')
+_LOGGER.setLevel(logging.INFO)
 
 
 
