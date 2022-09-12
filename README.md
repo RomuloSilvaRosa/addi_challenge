@@ -1,5 +1,5 @@
 # Addi Challenge
-The current repository contains infrastructure as code, deployment and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
+The current repository contains infrastructure as code, deployment, and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
 
 
 ## Challenge steps:
@@ -46,7 +46,7 @@ bash scripts/clean.sh
 ```
 ## Proposed Architecture (v0)
 The architecture is compounded of 4 elements: 
-1. A DynamoDB acting as an in memory feature store;
+1. A DynamoDB acting as an in-memory feature store;
 2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
 3. A Kinesis Firehose + S3 + Athena acting as an evaluation store;
 4. A Lambda (orchestrator) acting as a glue between feature gathering, model prediction and logging data in evaluation store.
@@ -57,7 +57,7 @@ The architecture is compounded of 4 elements:
 A v1 architecture should:
 1. Monitor model performance;
 2. Alarm in real time any undesired model condition;
-3. Retrain model from Evaluation Store. Evaluation Stores seem to be more confident as feature source than Feature Stores (because Evaluation Stores features are an exact copy of production features);
+3. Retrain model from Evaluation Store. Evaluation Stores seem to be more confident as feature sources than Feature Stores (because Evaluation Stores features are an exact copy of production features);
 4. Having an API Gateway in front of Lambda orchestrator for caching and security purposes.
 
 <img src="./docs/images/v1.png" align="center"/>
