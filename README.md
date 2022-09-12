@@ -65,9 +65,10 @@ A v1 architecture should:
 
 ### Challenge Improvements
 
-- [ ] Use variables in Terraform
-- [ ] Convert Trainning.ipynb into an executable py file
+- [ ] Use variables in Terraform instead of hard coded names (for lambdas, ecr, etc)
+- [ ] Convert Trainning.ipynb into an executable .py file
 - [ ] Improve documentation (infrastructure and lambdas README.md)
 - [ ] Improve documentation (lambda python documentation)
 - [ ] Add unit tests
+- [ ] Change Kinesis Firehose/Athena data format to Parquet or Orc
 - [ ] Create CI/CD to different stages (sand/dev/prd)
