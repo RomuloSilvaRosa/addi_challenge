@@ -1,10 +1,10 @@
 # Addi Challenge
-The current repository contains infraestructure as code, deployment and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
+The current repository contains infrastructure as code, deployment and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
 
 
 ## Challenge steps:
 1. Train model and save in a model.joblib file in  https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
-2. Deploy infraestructure (`./infraestructure`) using `scripts/CI.sh -a`
+2. Deploy infrastructure (`./infrastructure`) using `scripts/CI.sh -a`
 3. Deploy applications (`.lambdas`) using `scripts/CD.sh -a`
 
 
@@ -25,12 +25,12 @@ bash scripts/clean.sh
 .
 ├── docs
 │   └── images
-├── infraestructure
-│   ├── evaluation_store_main.tf # Evaluation Store Infraestructure
-│   ├── feature_store_dynamo.tf # Dynamo Feature Store Infraestructure
-│   ├── Makefile # Logic to deploy infraestructure
-│   ├── model_store_model.tf # Model Store Machine learning Model Infraestructure
-│   ├── model_store_orchestrator.tf # Model Store Orchestrator Infraestructure
+├── infrastructure
+│   ├── evaluation_store_main.tf # Evaluation Store Infrastructure
+│   ├── feature_store_dynamo.tf # Dynamo Feature Store Infrastructure
+│   ├── Makefile # Logic to deploy infrastructure
+│   ├── model_store_model.tf # Model Store Machine learning Model Infrastructure
+│   ├── model_store_orchestrator.tf # Model Store Orchestrator Infrastructure
 │   └── provider.tf # Provider configurations
 ├── lambdas
 │   ├── model_orchestrator # Model Store Orchestrator lambda to serve it
@@ -57,7 +57,8 @@ The architecture is compounded of 4 elements:
 A v1 architecture should:
 1. Monitor model performance;
 2. Alarm in real time any undesired model condition;
-3. Retrain model from Evaluation Store. Evaluation Stores seem to be more confident as feature source than Feature Stores (because Evaluation Stores features are an exact copy of production features)
+3. Retrain model from Evaluation Store. Evaluation Stores seem to be more confident as feature source than Feature Stores (because Evaluation Stores features are an exact copy of production features);
+4. Having an API Gateway in front of Lambda orchestrator for caching and security purposes.
 
 <img src="./docs/images/v1.png" align="center"/>
 
@@ -66,7 +67,7 @@ A v1 architecture should:
 
 - [ ] Use variables in Terraform
 - [ ] Convert Trainning.ipynb into an executable py file
-- [ ] Improve documentation (infraestructure and lambdas README.md)
+- [ ] Improve documentation (infrastructure and lambdas README.md)
 - [ ] Improve documentation (lambda python documentation)
 - [ ] Add unit tests
 - [ ] Create CI/CD to different stages (sand/dev/prd)

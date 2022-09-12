@@ -1,15 +1,15 @@
 #!/bin/bash
 
-apply_infraestructure() {
-    echo "Applying Infraestructure"
-    cd infraestructure
+apply_infrastructure() {
+    echo "Applying Infrastructure"
+    cd infrastructure
     make apply
     cd -
 }
 
-destroy_infraestructure() {
-    echo "Destroying Infraestructure"
-    cd infraestructure
+destroy_infrastructure() {
+    echo "Destroying Infrastructure"
+    cd infrastructure
     make destroy
     cd -
 }
@@ -36,7 +36,7 @@ while getopts "da" arg; do
     esac
 done
 if [[ $DESTROY == 1 ]]; then
-    destroy_infraestructure
+    destroy_infrastructure
 else
-    apply_infraestructure
+    apply_infrastructure
 fi
