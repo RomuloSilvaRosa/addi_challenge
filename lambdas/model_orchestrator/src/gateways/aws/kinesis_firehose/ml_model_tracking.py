@@ -1,6 +1,5 @@
-from datetime import date
 from datetime import datetime as dt
-from typing import Any, Dict, List
+from typing import Dict
 from uuid import uuid4
 
 from pydantic import Field
@@ -17,8 +16,9 @@ class MLModelTrackingSchema(BaseModel):
     model_version: str
     features: DataType
     prediction: str
-    pk : str
+    pk: str
     created_at: dt = Field(default_factory=dt.utcnow)
+
 
 def str_everything(data):
     if isinstance(data, list):
@@ -33,6 +33,8 @@ def str_everything(data):
         return _d
     else:
         return str(data)
+
+
 class MLModelTrackingKinesisFirehoseGateway:
     _stream_name = "evaluation-store-firehose-stream"
     _device = FirehoseClient()
@@ -44,7 +46,7 @@ class MLModelTrackingKinesisFirehoseGateway:
         model_version: int,
         features: DataType,
         prediction: str,
-        pk : str
+        pk: str
     ) -> None:
         json_body = MLModelTrackingSchema(
             model_name=model_name,

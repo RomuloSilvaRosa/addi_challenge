@@ -1,11 +1,10 @@
 import typing
 from abc import ABC, abstractclassmethod
-from datetime import datetime as dt
 
 from src.gateways.aws.dynamodb.credit_card_feature_store import \
     CreditCardFeatureStoreGateway
-from src.gateways.aws.kinesis_firehose.ml_model_tracking import \
-    MLModelTrackingKinesisFirehoseGateway, str_everything
+from src.gateways.aws.kinesis_firehose.ml_model_tracking import (
+    MLModelTrackingKinesisFirehoseGateway, str_everything)
 from src.gateways.aws.lambda_gateway.addi_model import \
     AddiChallengeModeleGateway
 
