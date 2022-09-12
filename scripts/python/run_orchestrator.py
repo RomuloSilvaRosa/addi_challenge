@@ -12,11 +12,7 @@ event = ExpectedEvent(
     ),
     client=ExpectedClientEvent(id=2),
 )
-# p = event.to_json()
-# print(p)
-# with open("input_data.json", "w") as f:
-#     f.write(json.dumps(p))
-
-# print(json.dumps(event.to_dict()))
+print("event to test in lambda console")
+print(json.dumps(event.to_dict()))
 r = handler(event.to_dict(), None)
 # print("response:", r)
