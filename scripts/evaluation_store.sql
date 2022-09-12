@@ -3,7 +3,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `evaluation_store_table`.`addi_challenge_v1`
   `model_name` string,
   `model_version` string,
   `features` map<string,string>,
-  `created_at` string
+  `created_at` string,
+  `prediction` string,
+  `pk`string
 
 
 )
