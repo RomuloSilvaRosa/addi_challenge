@@ -22,6 +22,8 @@ def main(client_id: int, model_name: str, model_version: int):
     print(5*"-=", "Evaluating", 5*"-=")
     print("target:", t)
     print("prediction:", prediction)
+    print(5*"-=", "Lambda Json Event", 5*"-=")
+    print(json.dumps(event.to_dict()))
     print(5*"-=", "Variables", 5*"-=")
     print(json.dumps(d))
     assert t == prediction, "Something went wrong"
