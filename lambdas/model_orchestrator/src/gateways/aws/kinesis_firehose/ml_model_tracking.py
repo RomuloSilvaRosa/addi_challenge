@@ -18,7 +18,7 @@ class MLModelTrackingSchema(BaseModel):
     features: DataType
     prediction: str
     pk : str
-    created_at: dt = Field(default_factory=dt.now)
+    created_at: dt = Field(default_factory=dt.utcnow)
 
 def str_everything(data):
     if isinstance(data, list):
