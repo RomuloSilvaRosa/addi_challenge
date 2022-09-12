@@ -10,6 +10,5 @@ class AddiChallengeModeleGateway:
     @classmethod
     def invoke(cls, body:str) -> typing.Any:
         resp = cls._device.invoke(function_name=cls._lambda_name, body=body)
-        print(resp)
         return resp["prediction"]
 

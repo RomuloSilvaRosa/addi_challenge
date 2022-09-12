@@ -72,3 +72,4 @@ A v1 architecture should:
 - [ ] Add unit tests
 - [ ] Change Kinesis Firehose/Athena data format to Parquet or Orc
 - [ ] Create CI/CD to different stages (sand/dev/prd)
+- [ ] Add argparser to all python helper scripts

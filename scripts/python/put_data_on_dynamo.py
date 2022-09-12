@@ -7,20 +7,24 @@ from src.gateways.aws.dynamodb.credit_card_feature_store import \
     CreditCardFeatureStoreGateway
 
 
+TARGET_COL = "default.payment.next.month"
+
 def put_data(indexes):
     df = pd.read_csv("./lambdas/model_trainning/data/UCI_Credit_Card.csv")
 
     df.set_index("ID", inplace=True)
     df.rename(columns={"PAY_0": "PAY_1"}, inplace=True)
-    features = df.drop("default.payment.next.month", axis=1)
-    # target = df["default.payment.next.month"]
-    values = features.iloc[indexes]
+    
+    values = df.loc[indexes]
     values_dict = values.reset_index().to_dict(orient='records')
-    for x in values_dict:
-        print(x)
+    for x_ in values_dict:
+        x = x_.copy()
+        x.pop(TARGET_COL)
         x_id = x.pop("ID")
         CreditCardFeatureStoreGateway.insert_data(x_id, x)
+    return values_dict
 
-
-INDEXES = [0, 1, 2]
-put_data(INDEXES)
+if __name__ == '__main__':
+    INDEXES = [3]
+    res = put_data(INDEXES)
+    print(res)
