@@ -1,5 +1,3 @@
-"""Lambda function to connect to database base a
-"""
 import logging
 
 from src.entities.base import BaseModel
