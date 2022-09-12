@@ -73,3 +73,4 @@ A v1 architecture should:
 - [ ] Change Kinesis Firehose/Athena data format to Parquet or Orc
 - [ ] Create CI/CD to different stages (sand/dev/prd)
 - [ ] Add argparser to all python helper scripts
+- [ ] Use hashicorp/terraform:${VERSION} docker image to run terraform without installment
