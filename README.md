@@ -36,7 +36,7 @@ bash scripts/clean.sh
 │   ├── model_orchestrator # Model Store Orchestrator lambda to serve it
 │   └── model_trainning # Model Store Machine learning Model trainning procedure and lambda to serve it
 ├── README.md
-└── scripts # scripts to handle to deploy and destroy infra
+└── scripts # scripts to deploy and destroy infra
     ├── CD.sh
     ├── CI.sh
     ├── clean.sh
@@ -74,3 +74,4 @@ A v1 architecture should:
 - [ ] Create CI/CD to different stages (sand/dev/prd)
 - [ ] Add argparser to all python helper scripts
 - [ ] Use hashicorp/terraform:${VERSION} docker image to run terraform without installment
+- [ ] Use probability instead of boolean result in prediction (prediction_proba)

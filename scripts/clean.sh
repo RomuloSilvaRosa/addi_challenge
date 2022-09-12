@@ -1,21 +1,27 @@
 #!/bin/bash
 
-aws athena start-query-execution --query-string "DROP TABLE IF EXISTS addi_challenge_v1" | true
-aws s3 rm s3://addi-challenge-evaluation-store --recursive | true
-
-get_images(){
+clean_athena() {
+    echo "Cleaning Athena"
+    aws athena start-query-execution --query-string "DROP TABLE IF EXISTS evaluation_store_table.addi_challenge_v1" >/dev/null 2>&1 | true
+}
+clean_s3() {
+    echo "Cleaning s3"
+    aws s3 rm s3://addi-challenge-evaluation-store --recursive
+}
+get_images() {
     aws ecr list-images --repository-name $1 --query 'imageIds[*]' --output json
 }
-delete_images(){
-    echo $1 $2
-    aws ecr batch-delete-image --repository-name $1 --image-ids "$2" > /dev/null 2>&1 || true
+delete_images() {
+    echo "Deleting images from ecr repo $1: $2"
+    aws ecr batch-delete-image --repository-name $1 --image-ids "$2" >/dev/null 2>&1 || true
 }
 delete_all_images() {
-    IMAGES_TO_DELETE=$(get_images $1)
-    delete_images $1 $IMAGES_TO_DELETE
+    IMAGES_TO_DELETE=$(get_images "$1")
+    delete_images $1 "${IMAGES_TO_DELETE}"
 }
+
+clean_athena
+clean_s3
 delete_all_images model/lambda
 delete_all_images orchestrator/lambda
-bash scripts/CI.sh -d
-
-
+bash scripts/CD.sh -d
