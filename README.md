@@ -1,5 +1,5 @@
 # Addi Challenge
-The current repository contains infraestructure as code, deployment and application logic to serve a very simple machine learning architectured composed of a feature + model + evaluation store.
+The current repository contains infraestructure as code, deployment and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
 
 
 ## Challenge steps:
@@ -44,7 +44,7 @@ bash scripts/clean.sh
     ├── python
     └── up_infra.sh
 ```
-## Proposed Architecture
+## Proposed Architecture (v0)
 The architecture is compounded of 4 elements: 
 1. A DynamoDB acting as an in memory feature store;
 2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
@@ -52,4 +52,21 @@ The architecture is compounded of 4 elements:
 4. A Lambda (orchestrator) acting as a glue between feature gathering, model prediction and logging data in evaluation store.
 
 <img src="./docs/images/addi_diag.png" align="center"/>
-<!-- <img align="left" width="0" height="192px" hspace="10"/> -->
+
+### Proposed Architecture (v1)
+A v1 architecture should:
+1. Monitor model performance;
+2. Alarm in real time any undesired model condition;
+3. Retrain model from Evaluation Store. Evaluation Stores seem to be more confident as feature source than Feature Stores (because Evaluation Stores features are an exact copy of production features)
+
+<img src="./docs/images/v1.png" align="center"/>
+
+
+### Challenge Improvements
+
+- [ ] Use variables in Terraform
+- [ ] Convert Trainning.ipynb into an executable py file
+- [ ] Improve documentation (infraestructure and lambdas README.md)
+- [ ] Improve documentation (lambda python documentation)
+- [ ] Add unit tests
+- [ ] Create CI/CD to different stages (sand/dev/prd)
