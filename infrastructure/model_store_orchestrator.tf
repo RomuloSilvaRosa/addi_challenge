@@ -137,7 +137,7 @@ resource "aws_ecr_repository" "orchestrator-ecr" {
 }
 
 resource "aws_lambda_function" "orchestrator-lambda" {
-  function_name = "addi-challenge-orchestrator"
+  function_name = "company-showcase-orchestrator"
   image_uri     = "${aws_ecr_repository.orchestrator-ecr.repository_url}:latest"
   package_type  = "Image"
   role          = aws_iam_role.iam-lambda-orchestrator.arn

@@ -1,9 +1,9 @@
-# Addi Challenge
+# Feature + Model + Evaluation Store
 The current repository contains infrastructure as code, deployment, and application logic to serve a very simple machine learning architecture composed of a feature + model + evaluation store.
 
 
-## Challenge steps:
-1. Train model and save in a model.joblib file in  https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
+## showcase steps:
+1. Train model and save in a model.joblib file in  https://github.com/RomuloSilvaRosa/showcase_mlops_feature_model_evaluation_store/blob/main/lambdas/model_trainning/Trainning.ipynb
 2. Deploy infrastructure (`./infrastructure`) using `scripts/CI.sh -a`
 3. Deploy applications (`.lambdas`) using `scripts/CD.sh -a`
 
@@ -47,11 +47,11 @@ bash scripts/clean.sh
 ## Proposed Architecture (v0)
 The architecture is compounded of 4 elements: 
 1. A DynamoDB acting as an in-memory feature store;
-2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/addi_challenge/blob/main/lambdas/model_trainning/Trainning.ipynb
+2. A Lambda (model) serving the machine learning model trainned in https://github.com/RomuloSilvaRosa/showcase_mlops_feature_model_evaluation_store/blob/main/lambdas/model_trainning/Trainning.ipynb
 3. A Kinesis Firehose + S3 + Athena acting as an evaluation store;
 4. A Lambda (orchestrator) acting as a glue between feature gathering, model prediction and logging data in evaluation store.
 
-<img src="./docs/images/addi_diag.png" align="center"/>
+<img src="./docs/images/company_diag.png" align="center"/>
 
 ### Proposed Architecture (v1)
 A v1 architecture should:
@@ -63,7 +63,7 @@ A v1 architecture should:
 <img src="./docs/images/v1.png" align="center"/>
 
 
-### Challenge Improvements
+### showcase Improvements
 
 - [ ] Use variables in Terraform instead of hard coded names (for lambdas, ecr, etc)
 - [ ] Convert Trainning.ipynb into an executable .py file

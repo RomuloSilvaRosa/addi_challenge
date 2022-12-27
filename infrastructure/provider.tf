@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "addi-challenge-tf-states"
+    bucket = "company-showcase-tf-states"
     key    = "states/model_feature_evaluation_store/terraform.tfstate"
     region = "sa-east-1"
   }

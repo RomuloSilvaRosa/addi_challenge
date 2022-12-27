@@ -65,7 +65,7 @@ resource "aws_ecr_repository" "model-ecr" {
 }
 
 resource "aws_lambda_function" "model-lambda" {
-  function_name = "addi-challenge-model"
+  function_name = "company-showcase-model"
   image_uri     = "${aws_ecr_repository.model-ecr.repository_url}:latest"
   package_type  = "Image"
   role          = aws_iam_role.iam-lambda-model.arn

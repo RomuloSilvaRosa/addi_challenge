@@ -2,11 +2,11 @@
 
 clean_athena() {
     echo "Cleaning Athena"
-    aws athena start-query-execution --query-string "DROP TABLE IF EXISTS evaluation_store_table.addi_challenge_v1" >/dev/null 2>&1 | true
+    aws athena start-query-execution --query-string "DROP TABLE IF EXISTS evaluation_store_table.showcase_mlops_feature_model_evaluation_store_v1" >/dev/null 2>&1 | true
 }
 clean_s3() {
     echo "Cleaning s3"
-    aws s3 rm s3://addi-challenge-evaluation-store --recursive
+    aws s3 rm s3://company-showcase-evaluation-store --recursive
 }
 get_images() {
     aws ecr list-images --repository-name $1 --query 'imageIds[*]' --output json

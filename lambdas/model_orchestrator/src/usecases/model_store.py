@@ -5,8 +5,8 @@ from src.gateways.aws.dynamodb.credit_card_feature_store import \
     CreditCardFeatureStoreGateway
 from src.gateways.aws.kinesis_firehose.ml_model_tracking import (
     MLModelTrackingKinesisFirehoseGateway, str_everything)
-from src.gateways.aws.lambda_gateway.addi_model import \
-    AddiChallengeModeleGateway
+from src.gateways.aws.lambda_gateway.company_model import \
+    companyshowcaseModeleGateway
 
 ModelCatalog: typing.Dict[typing.Tuple[str, int], 'ModelStore'] = dict()
 
@@ -35,8 +35,8 @@ class ModelStore(ABC):
         pass
 
 
-class AddiChallengeModel(ModelStore):
-    name = 'addi-challenge'
+class companyshowcaseModel(ModelStore):
+    name = 'company-showcase'
     version = 1
 
     @classmethod
@@ -46,7 +46,7 @@ class AddiChallengeModel(ModelStore):
 
     @classmethod
     def predict(cls, features: typing.Dict[str, typing.Any]):
-        response = AddiChallengeModeleGateway.invoke(features)
+        response = companyshowcaseModeleGateway.invoke(features)
         return response
 
     @classmethod

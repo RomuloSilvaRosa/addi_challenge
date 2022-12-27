@@ -3,7 +3,7 @@
 # MAKEFLAGS += --no-print-directory -s
 # endif
 ECR_NAME=orchestrator/lambda
-FUNCTION_NAME=addi-challenge-orchestrator
+FUNCTION_NAME=company-showcase-orchestrator
 
 lint: ## Remove unused imports and variables/Format using black
 	@echo "---- Refactorying ----"

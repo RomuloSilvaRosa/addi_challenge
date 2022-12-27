@@ -10,7 +10,7 @@ from main import ExpectedEvent, ExpectedModelEvent, ExpectedClientEvent, handler
 def main():
     event = ExpectedEvent(
         model=ExpectedModelEvent(
-            model_name="addi-challenge",
+            model_name="company-showcase",
             model_version=1,
         ),
         client=ExpectedClientEvent(id=2),

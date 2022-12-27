@@ -35,7 +35,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", '--client-id', metavar="client_id",
                         required=True, type=int, default=3, help="The client id desired to evaluate")
     parser.add_argument("-m", '--model-name', metavar="model_name",
-                        required=False, type=str, default="addi-challenge", help="The model name desired to evaluate")
+                        required=False, type=str, default="company-showcase", help="The model name desired to evaluate")
     parser.add_argument("-v", '--model_version', metavar="model_version",
                         required=False, type=int, default=1, help="The model version desired to evaluate")
     args = parser.parse_args()

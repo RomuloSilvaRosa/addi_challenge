@@ -3,7 +3,7 @@
 # MAKEFLAGS += --no-print-directory -s
 # endif
 ECR_NAME=model/lambda
-FUNCTION_NAME=addi-challenge-model 
+FUNCTION_NAME=company-showcase-model 
 lint: ## Remove unused imports and variables/Format using black
 	@echo "---- Refactorying ----"
 	@autoflake --remove-all-unused-imports --remove-duplicate-keys --remove-unused-variables --in-place --exclude globs -r .

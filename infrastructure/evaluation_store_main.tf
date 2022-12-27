@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket = "addi-challenge-evaluation-store"
+  bucket = "company-showcase-evaluation-store"
 }
 
 resource "aws_s3_bucket_acl" "bucket_acl" {
